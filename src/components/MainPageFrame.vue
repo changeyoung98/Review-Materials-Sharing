@@ -1,70 +1,116 @@
 <template>
-  <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Brand</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+  <el-container>
+    <el-header>
+      <el-row>
+      <el-col :span="15"><div class="grid-content bg-purple"></div></el-col>
+      <el-col :span="3">
+        <div class="grid-content bg-purple-light">
+          <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+          <el-submenu index="2">
+          <template slot="title">我的工作台</template>
+          <el-menu-item index="2-1">选项1</el-menu-item>
+          <el-menu-item index="2-2">选项2</el-menu-item>
+          <el-menu-item index="2-3">选项3</el-menu-item>
+          </el-submenu>
+          </el-menu>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+      </el-col>
+      <el-col :span="6">
+        <div class="grid-content bg-purple">
+          <el-button>注册</el-button>
+          <el-button>登录</el-button>
+        </div>
+      </el-col>
+      </el-row>
+    </el-header>
+    <el-container>
+    <el-aside width="200px">Aside</el-aside>
+    <el-main>Main</el-main>
+    </el-container>
+    <el-footer>Footer</el-footer>
+  </el-container>
+</div>
 </template>
 
 <script>
-import navbar from '@/components/navbar'
 export default {
   name: 'MainPageFrame',
-  component: {
-    navbar
-  },
-  data () {
-    return {
-
+  data() {
+      return {
+        activeIndex: '1',
+        activeIndex2: '1'
+      };
+    },
+    methods: {
+      handleSelect(key, keyPath) {
+        console.log(key, keyPath);
+      }
     }
-  }
+
 }
 </script>
+
+<style>
+.el-header, .el-footer {
+   background-color: #FFFFFF;
+   color: #333;
+   text-align: center;
+   line-height: 60px;
+ }
+
+ .el-aside {
+   background-color: #F8F8FF;
+   color: #333;
+   text-align: center;
+   line-height: 600px;
+   hight: 600px;
+ }
+
+ .el-main {
+   background-color: #FAFAFA;
+   color: #333;
+   text-align: center;
+   line-height: 160px;
+   height: 600px;
+ }
+
+ body > .el-container {
+   margin-bottom: 40px;
+ }
+
+ .el-container:nth-child(5) .el-aside,
+ .el-container:nth-child(6) .el-aside {
+   line-height: 260px;
+ }
+
+ .el-container:nth-child(7) .el-aside {
+   line-height: 320px;
+ }
+
+ .el-row {
+   margin-bottom: 0px;
+   &:last-child {
+     margin-bottom: 0;
+   }
+ }
+ .el-col {
+   border-radius: 4px;
+ }
+ .bg-purple-dark {
+   background: #FFFFFF;
+ }
+ .bg-purple {
+   background: #FFFFFF;
+ }
+ .bg-purple-light {
+   background: #FFFFFF;
+ }
+ .grid-content {
+   border-radius: 4px;
+   min-height: 60px;
+ }
+ .row-bg {
+   padding: 10px 0;
+   background-color: #f9fafc;
+ }
+</style>
