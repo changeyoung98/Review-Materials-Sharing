@@ -1,90 +1,18 @@
 <template>
   <el-container>
     <el-header>
-      <el-row>
-      <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
-      <el-col :span="5">
-        <div class="grid-content bg-purple-light">
-            <el-autocomplete class="inline-input" v-model="state2" :fetch-suggestions="querySearch" placeholder="Infinite World! xD" :trigger-on-focus="false" @select="handleSelect"></el-autocomplete>
-        </div>
-      </el-col>
-      <el-col :span="1">
-        <div class="grid-content bg-purple-light">
-          <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-          <el-submenu index="2">
-          <template slot="title">我的工作台</template>
-          <el-menu-item index="2-1">选项1</el-menu-item>
-          <el-menu-item index="2-2">选项2</el-menu-item>
-          <el-menu-item index="2-3">选项3</el-menu-item>
-          </el-submenu>
-          </el-menu>
-        </div>
-      </el-col>
-      <el-col :span="6">
-        <div class="grid-content bg-purple">
-          <el-button>注册</el-button>
-          <el-button>登录</el-button>
-        </div>
-      </el-col>
-      </el-row>
+      <nav-bar></nav-bar>
     </el-header>
     <el-container>
-    <el-aside width="200px">
-      <el-menu :default-openeds="['1', '3']">
-      <el-submenu index="1">
-        <template slot="title"><i class="el-icon-message"></i>导航一</template>
-        <el-menu-item-group>
-          <template slot="title">分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="1-4-1">选项4-1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-submenu index="2">
-        <template slot="title"><i class="el-icon-menu"></i>导航二</template>
-        <el-menu-item-group>
-          <template slot="title">分组一</template>
-          <el-menu-item index="2-1">选项1</el-menu-item>
-          <el-menu-item index="2-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="2-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="2-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="2-4-1">选项4-1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-submenu index="3">
-        <template slot="title"><i class="el-icon-setting"></i>导航三</template>
-        <el-menu-item-group>
-          <template slot="title">分组一</template>
-          <el-menu-item index="3-1">选项1</el-menu-item>
-          <el-menu-item index="3-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="3-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="3-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="3-4-1">选项4-1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-    </el-menu>
-    </el-aside>
-    <el-main></el-main>
+      <aside-main></aside-main>
     </el-container>
   </el-container>
 </div>
 </template>
 
 <script>
+import NavBar from './navbar'
+import AsideMain from './asideMain'
 export default {
   name: 'MainPageFrame',
   data() {
@@ -92,7 +20,11 @@ export default {
         activeIndex: '1',
         activeIndex2: '1'
       };
-    },
+  },
+  components: {
+    NavBar,
+    AsideMain
+  },
   methods: {
       querySearch (queryString, cb) {
       var Mines = this.Mines
@@ -124,17 +56,25 @@ export default {
 </script>
 
 <style>
-.el-header, .el-footer {
-   background-color: #FFFFFF;
+.el-header {
+   background-color: #ffffff;
    color: #333;
    text-align: center;
    line-height: 60px;
  }
 
+ .el-footer {
+    background-color: #ffffff;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
+
  .el-aside {
    background-color: #F8F8FF;
    color: #333;
    height: 700px;
+   width: 250px;
 
  }
 
@@ -167,13 +107,13 @@ export default {
    border-radius: 4px;
  }
  .bg-purple-dark {
-   background: #FFFFFF;
+   background: #ffffff;
  }
  .bg-purple {
-   background: #FFFFFF;
+   background: #ffffff;
  }
  .bg-purple-light {
-   background: #FFFFFF;
+   background: #ffffff;
    margin-right: 0px;
  }
  .grid-content {
