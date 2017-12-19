@@ -6,6 +6,7 @@
     <el-container>
       <aside-main></aside-main>
     </el-container>
+    <el-footer>
   </el-container>
 </div>
 </template>
@@ -71,7 +72,7 @@ export default {
   }
 
  .el-aside {
-   background-color: #F8F8FF;
+   background-color: #ffffff;
    color: #333;
    height: 700px;
    width: 250px;
@@ -122,7 +123,7 @@ export default {
  }
  .row-bg {
    padding: 10px 0;
-   background-color: #f9fafc;
+   background-color: #ffffff;
  }
  .inline-input{
    margin-right: 0px;

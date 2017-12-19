@@ -18,7 +18,6 @@
     </div>
   </el-col>
   </el-row>
-  <el-main></el-main>
 </div>
 </template>
 
