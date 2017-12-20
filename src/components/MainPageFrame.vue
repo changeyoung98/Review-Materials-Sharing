@@ -7,27 +7,31 @@
       <aside-main></aside-main>
     </el-container>
     <el-footer>
+      <footer-content></footer-content>
+    </el-footer>
   </el-container>
-</div>
 </template>
 
 <script>
 import NavBar from './navbar'
 import AsideMain from './asideMain'
+import FooterContent from './footer'
+
 export default {
   name: 'MainPageFrame',
-  data() {
-      return {
-        activeIndex: '1',
-        activeIndex2: '1'
-      };
+  data () {
+    return {
+      activeIndex: '1',
+      activeIndex2: '1'
+    }
   },
   components: {
     NavBar,
-    AsideMain
+    AsideMain,
+    FooterContent
   },
   methods: {
-      querySearch (queryString, cb) {
+    querySearch (queryString, cb) {
       var Mines = this.Mines
       var results = queryString ? Mines.filter(this.createFilter(queryString)) : Mines
       // 调用 callback 返回建议列表的数据
@@ -57,6 +61,11 @@ export default {
 </script>
 
 <style>
+.footer-block {
+  background: #000000;
+
+}
+
 .el-header {
    background-color: #ffffff;
    color: #333;
@@ -65,24 +74,20 @@ export default {
  }
 
  .el-footer {
-    background-color: #ffffff;
-    color: #333;
-    text-align: center;
-    line-height: 60px;
+    background-color: #696969;
   }
+
 
  .el-aside {
    background-color: #ffffff;
    color: #333;
-   height: 700px;
-   width: 250px;
-
+   height: 800px;
  }
 
  .el-main {
    background-color: #FAFAFA;
    color: #333;
-   height: 700px;
+   height: 800px;
  }
 
  body > .el-container {

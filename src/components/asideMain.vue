@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <el-container>
   <el-aside width="200px">
     <el-menu :default-openeds="['1', '3']">
     <el-submenu index="1">
@@ -37,12 +37,16 @@
     </el-submenu>
   </el-menu>
   </el-aside>
-  <el-main></el-main>
-</div>
+  <el-main><dis-play></dis-play></el-main>
+</el-container>
 </template>
 
 <script>
+import Display from './display'
 export default {
-  name: 'aside-main'
+  name: 'aside-main',
+  components: {
+    Display
+  }
 }
 </script>
