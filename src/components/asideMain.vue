@@ -2,7 +2,7 @@
   <el-container>
   <el-aside width="200px">
     <el-menu :default-openeds="['1', '3']">
-    <el-submenu index="1">
+    <el-submenu index="1" v-show="now === ''">
       <template slot="title"><i class="el-icon-message"></i>历年试卷</template>
       <el-menu-item-group>
         <template slot="title">期中</template>
@@ -47,6 +47,11 @@ export default {
   name: 'aside-main',
   components: {
     Display
+  },
+  data () {
+    return {
+      now: this.$route.params.id
+    }
   }
 }
 </script>

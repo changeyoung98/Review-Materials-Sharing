@@ -30,6 +30,14 @@ export default {
     AsideMain,
     FooterContent
   },
+  beforeCreate () {
+    if (this.$route.params.id === '...') {
+      console.log('fuck')
+      var url = window.location.href
+      url = url.substring(0, url.indexOf('#/'))
+      window.location.href = url
+    }
+  },
   methods: {
     querySearch (queryString, cb) {
       var Mines = this.Mines
