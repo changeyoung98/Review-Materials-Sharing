@@ -10,23 +10,20 @@
     <div class="center" v-show="isPDF">
       <pdf src="./static/PDF/hw-10.pdf"> </pdf>
     </div>
+    <upload v-on:click="upload">upload</upload>
   </div>
 </template>
 
 <script>
   import pdf from "vue-pdf"
-
+import images from '../images.json'
+  import upload from './components/upload.vue'
 export default {
   name: 'app',
   data (){
       return{
           selectIndex:0,
-          imgsArr:[
-            {url:"./static/image/1.jpg"},
-            {url:"./static/image/2.jpg"},
-            {url:"./static/image/3.jpg"},
-            {url:"./static/image/4.jpg"},
-          ],
+          imgsArr:images.imageAddr,
         isImage:false,
         isPDF:true
       }
@@ -50,7 +47,8 @@ export default {
     }
   },
   components:{
-      pdf
+      pdf,
+      upload
   }
 }
 </script>
